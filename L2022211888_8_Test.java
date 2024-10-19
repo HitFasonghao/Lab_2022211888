@@ -48,6 +48,27 @@ class L2022211888_8_Test {
         assertEquals(3,solution8.numIslands(grid));
     }
 
+    //新增测试用例
+    @Test
+    public void testAllAreOneOrZeroGrid(){
+        //测试目的：验证当输入不全为1或0的矩阵时，函数能够进行异常提示
+        //测试用例：[[1,0,3,1],[0,1,4,0],[0,1,5,0],[1,1,0,6]]
+        char[][] grid ={
+                {'1','0','3','1'},
+                {'0','1','4','0'},
+                {'0','1','5','0'},
+                {'1','1','0','6'}
+        };
+        Solution8 solution8 = new Solution8();
+        try{
+            solution8.numIslands(grid);
+            fail("Expected IllegalArgumentException to be thrown");
+        }catch (IllegalArgumentException e){
+            assertTrue(e.getMessage().contains("数组元素不全为1或0"));
+        }
+
+    }
+
     @Test
     public void testEmptyGrid() {
         //测试目的：验证当输入为null或空矩阵时，函数返回0。
